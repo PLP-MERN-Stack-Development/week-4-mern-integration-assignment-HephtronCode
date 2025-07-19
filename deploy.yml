@@ -1,0 +1,28 @@
+name: MERN Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  MONGO_URI: ${mongodb://localhost:27017/mern-blog}
+  JWT_SECRET: ${rayyanakoredeabubakar123#}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Deploy to production
+        run: |
+          ssh user@server 'cd /var/www/mern-app && git pull && npm install && pm2 restart all'
