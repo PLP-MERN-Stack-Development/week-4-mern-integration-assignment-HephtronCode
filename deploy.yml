@@ -6,8 +6,8 @@ on:
       - main
 
 env:
-  MONGO_URI: ${mongodb://localhost:27017/mern-blog}
-  JWT_SECRET: ${rayyanakoredeabubakar123#}
+  MONGO_URI: ${{ secrets.MONGO_URI }}
+  JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
 jobs:
   build:
